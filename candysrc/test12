@@ -1,0 +1,17 @@
+Average3
+done
+Total Time for Reading Input0.027522
+Total Time for Reading Changes0.012926
+Total Affected count:6504
+Percentage Affected:59.7849
+here1hereI am here running adaptiveRunning file using ./Galois-2.2.1/build/tools/graph-convert/graph-convert -intedgelist2gr galoisinput graphconvertoutput
+InGraph : |V| = 10876, |E| = 6666
+OutGraph: |V| = 10876, |E| = 6666
+Running file using ./Galois-2.2.1/build/apps/pagerank/pagerank graphconvertoutput -graphTranspose=graphconvertoutput  -t 1 >galoisoutput
+STAT,(NULL),TotalTime,1,3,3
+Total Affected count:5113
+Percentage Affected:46.9988
+Total Time for remove Dangling vertices867
+maxL100
+Total Time for updating Network 0.000240
+Total Time for updating Network 0.000240
