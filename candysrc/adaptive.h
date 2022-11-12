@@ -4,7 +4,6 @@
 
 #ifndef BHOWMICKPR_ADAPTIVE_H
 #define BHOWMICKPR_ADAPTIVE_H
-#include <bits/stdc++.h>
 #include<string>
 #include <sstream>
 #include <iostream>

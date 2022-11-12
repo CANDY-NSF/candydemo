@@ -4,6 +4,7 @@
 
 * Python 3.10
 * CMake (version 3.13 or above is recommended)
+* C++ compiler with OpenMP support (Note: on Apple hardware, we suggest `brew install llvm`)
 
 ### Getting started
 
@@ -21,18 +22,22 @@ To run this demo on your own machine, follow these steps.
    python3.10 -m venv venv
    source venv/bin/activate
    ```
-   Install jupyter if you don't already have it, `pip3.10 install jupyter`
+   Install pybind11 and jupyter if you don't already have them:
+
+   ```
+   pip install --upgrade pip
+   pip install jupyter pybind11
+   ```
 4. In the `candydemo` folder, run:
 
    ```
    cmake -B build .
    cmake --build build
    ```
-5. Copy the file [`CANDY_demo.ipynb`](https://github.com/CANDY-NSF/candydemo/blob/master/CANDY_demo.ipynb) to the `candydemo/build` directory, e.g. `cp ../CANDY_demo.ipynb .`
-6. In `candydemo/build`, run
+5. In `candydemo`, run
 
    ```
-   jupyter-notebook
+   jupyter-notebook build/CANDY_demo.ipynb
    ```
-7. The previous step will automatically open a Jupyter notebook on your favorite browser and you can see the 	`CANDY_demo.ipynb` file  in file navigator
-8. From the navigator window on jupyter notebook you can launch the  `CANDY_demo.ipynb`  and run the candy library, more instruction about the candy library are  provided in the `CANDY_demo.ipynb` file
+6. The previous step will automatically open a Jupyter notebook on your favorite browser and you can see the 	`CANDY_demo.ipynb` file  in file navigator
+7. From the navigator window on jupyter notebook you can launch the  `CANDY_demo.ipynb`  and run the candy library, more instruction about the candy library are  provided in the `CANDY_demo.ipynb` file
