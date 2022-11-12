@@ -8,8 +8,10 @@
 ### Getting started
 To run this demo on your own machine, follow these steps.
 
-1. Clone this repository to your machine using git clone command, for example for HTTPS , please use git clone
-[GitHub Pages] (https://github.com/CANDY-NSF/candydemo.git)
+1. Clone this repository to your machine: 
+```
+git clone https://github.com/CANDY-NSF/candydemo.git
+```
 
 2. Navigate to candydemo directory i.e. cd candydemo
 
