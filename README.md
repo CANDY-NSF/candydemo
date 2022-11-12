@@ -13,9 +13,9 @@ To run this demo on your own machine, follow these steps.
 git clone https://github.com/CANDY-NSF/candydemo.git
 ```
 
-2. Navigate to candydemo directory i.e. cd candydemo
+2. Navigate to candydemo directory: `cd candydemo`
 
-3. Run 
+3. In the `candydemo` folder, run: 
 ```
 cmake -B build .
 cmake --build build
