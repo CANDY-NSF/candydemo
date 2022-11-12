@@ -1,26 +1,28 @@
 ## CANDY Demo
 
-Below are the steps on how to run this paython wrapper locally. The prerequsites for running is having cmake installed, CMake version 3.13 or above is recommended.
+### Prerequisites
 
+* Python 3.10
+* CMake (version 3.13 or above is recommended)
 
-Step1. Clone this repository to your machine using git clone command, for example for HTTPS , please use git clone
+### Getting started
+To run this demo on your own machine, follow these steps.
+
+1. Clone this repository to your machine using git clone command, for example for HTTPS , please use git clone
 [GitHub Pages] (https://github.com/CANDY-NSF/candydemo.git)
 
-Step2. Navigate to candydemo directory i.e. cd candydemo
+2. Navigate to candydemo directory i.e. cd candydemo
 
-Step3. Now create a build directory i.e. mkdir build
+3. Run 
+```
+cmake -B build .
+cmake --build build
+```
 
-Step 4. Navigate to build directory i.e. cd build
+4. Copy the file [GitHub Pages] https://github.com/CANDY-NSF/candydemo/blob/master/CANDY_demo.ipynb to build directory, e.g. `cp ../CANDY_demo.ipynb .`
 
-Step 5. Run  command cmake ..
+5. From the build directory you can open jupyter-notebook by typing `jupyter-notebook`
 
-Step 6. Run command make 
+6. Step 5 will open a jupyter notbook on your favorite browser and you can see the CANDY_demo.ipynb file  in file navigator
 
-Step 7. Copy the file [GitHub Pages] https://github.com/CANDY-NSF/candydemo/blob/master/CANDY_demo.ipynb to build directory i.e. cp ../CANDY_demo.ipynb .
-
-Step 8. Now from the build directory you can open jupyter-notebook by typing jupyter-notebook
-
-Step 9. Step 8 will open a jupyter notbook on your favorite browser and you can see the CANDY_demo.ipynb file  in file navigator
-
-Step 10. From the navigator window on jupyter notebook you can launch the  CANDY_demo.ipynb  and run the candy library, more instruction about the candy library are 
-provided in the CANDY_demo.ipynb file
+7. From the navigator window on jupyter notebook you can launch the  CANDY_demo.ipynb  and run the candy library, more instruction about the candy library are  provided in the `CANDY_demo.ipynb` file
