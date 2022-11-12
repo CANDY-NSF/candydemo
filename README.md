@@ -21,7 +21,7 @@ cmake -B build .
 cmake --build build
 ```
 
-4. Copy the file [GitHub Pages] https://github.com/CANDY-NSF/candydemo/blob/master/CANDY_demo.ipynb to build directory, e.g. `cp ../CANDY_demo.ipynb .`
+4. Copy the file [`CANDY_demo.ipynb`](https://github.com/CANDY-NSF/candydemo/blob/master/CANDY_demo.ipynb) to the `candydemo/build` directory, e.g. `cp ../CANDY_demo.ipynb .`
 
 5. From the build directory you can open jupyter-notebook by typing `jupyter-notebook`
 
