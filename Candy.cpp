@@ -41,9 +41,8 @@ void help() {
             "changed edges, initial values of graph property, num of nodes, "
             "and number of threads.");
   py::print(
-      "For example, if I want to calculate Page Rank, here is how I would call "
-      "and pass the input parameters candy.pageRank('DirectedGraph', "
-      "'changedEdgesPR', 'InitialPR',6,32).");
+      "For example, to calculate Page Rank:  "
+      "candy.pageRank('DirectedGraph', 'changedEdgesPR', 'InitialPR',6,32).");
   py::print("For PR, Input graph should be in edge list format, input changed "
             "edges also is in edge list format with a flag 1 or 0, where 1 "
             "means insertion and 0 means deletion. "

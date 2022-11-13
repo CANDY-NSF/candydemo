@@ -10,7 +10,7 @@
 
 #include "../includes/ESSENS/ESSENS/Core/Basic_IO/Format/Input/Level1/ADJ/create_networkP.hpp"
 #include "../includes/ESSENS/ESSENS/Core/Basic_IO/Format/Input/Level2/input_to_network.hpp"
-         "
+
 #include <map>
 #include <set>
 
