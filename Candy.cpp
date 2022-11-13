@@ -42,7 +42,13 @@ void help()
     py::print("Currently CANDY Python wrapper supports updating Page Rank (PR), Single Source Shortest Path (SSSP).");
     py::print("All functions for CANDY requires initial graph file, file with changed edges, initial values of graph property, num of nodes, and number of threads.");
     py::print("For example, if I want to calculate Page Rank, here is how I would call and pass the input parameters candy.pageRank('DirectedGraph', "
-            "'changedEdgesPR', 'InitialPR',6,32).\n");
+            "'changedEdgesPR', 'InitialPR',6,32).");
+    py::print("For PR, Input graph should be in edge list format, input changed edges also is in edge list format with a flag 1 or 0, where 1 means insertion and 0 means deletion. "
+              "Intial PR file just has two columns, where column1 is the nodeID, and column2 is PageRank.");
+    py::print(" For SSSP, Input graph should be in edge list format, input changed edges also is in edge list format with a flag 1 or 0, where 1 means insertion and 0 means deletion. "
+              "Intial SSSP file just has two columns, where column1 is the nodeID, and column2 is SSSP.");
+
+
 
 
 

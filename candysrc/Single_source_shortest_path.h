@@ -12,7 +12,7 @@
 #include "Ins_Del1.hpp"
 #include "../includes/ESSENS/ESSENS/Core/Basic_IO/Format/Input/Level2/input_to_network.hpp"
 
-
+#include <pybind11/pybind11.h>
 //AUXILLIARY OPS
 #include<queue>
 #include<stack>
@@ -84,14 +84,14 @@ int singleSourceShortestPath(std::string inputGraphFile, std::string remainderGr
     readin_network(&X, ipr,-1);
     // readin_graphU(&X, nodes,argv[1]);
     endx=omp_get_wtime();
-    printf("Total Time for Reading Certificate Network %f \n", endx-startx);
+    py::print("Total Time for Reading Certificate Network:", endx-startx);
     /*** Finished Reading CRT Tree **/
 
     /*** Read set of Changed Edges ***/
     startx=omp_get_wtime();
     readin_changes(ce, &allChange);
     endx=omp_get_wtime();
-    printf("Total Time for Reading Update List %f \n", endx-startx);
+    py::print("Total Time for Reading Update List:", endx-startx);
     /*** Finished Reading Changed Edges **/
 
 /** Add Buffer for Extra Nodes ***/
@@ -122,15 +122,15 @@ int singleSourceShortestPath(std::string inputGraphFile, std::string remainderGr
         int te = 0;
         edge_update(&allChange, &X, &SSSP, &R, &maxV, &te, p);
         endx = omp_get_wtime();
-        printf("Total Time for Initial Update %f,\n", endx - startx);
+        py::print("Total Time for Initial Update:", endx - startx);
 
         startx = omp_get_wtime();
         rest_update(&X, &SSSP, &R, &maxV, &te, p);
         endx = omp_get_wtime();
-        printf("Total Time for Complete Update %f\n", endx - startx);
+        py::print("Total Time for Complete Update:", endx - startx);
 
         endy = omp_get_wtime();
-        printf("Total Time for Initia+Complete Update %f %d\n", endy - starty, te);
+        py::print("Total Time for Initia+Complete Update:", endy - starty, te);
 
     }
 
