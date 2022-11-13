@@ -46,7 +46,7 @@ int singleSourceShortestPath(std::string inputGraphFile, std::string remainderGr
     const char* ig = inputGraphFile.c_str();
     const char* ce = changedEdges.c_str();
     const char* ipr = remainderGraph.c_str();
-    int maxW = 100;
+    int maxW = 10;
     int nodes = totalNodes; //total number of vertices
     int batch=2; //the number of changes processed per point
     int p = threads;  //total number of threads per core
