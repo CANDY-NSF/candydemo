@@ -4,90 +4,75 @@
 
 #ifndef BHOWMICKPR_ADAPTIVE_H
 #define BHOWMICKPR_ADAPTIVE_H
-#include<string>
-#include <sstream>
-#include <iostream>
 #include <fstream>
+#include <iostream>
+#include <sstream>
+#include <string>
 
 /* Any other way */
 using namespace std;
 
-void prepareinputforGalois(PR_Network *X)
-{
-    ofstream myfile;
-    myfile.open ("galoisinput");
+void prepareinputforGalois(PR_Network *X) {
+  ofstream myfile;
+  myfile.open("galoisinput");
 
-    for (int i=0;i<X->size();i++)
-    {
+  for (int i = 0; i < X->size(); i++) {
 
-        for (int j=0;j<X->at(i).Out_Neigh.size();j++)
-        {
-            if(X->at(i).Out_Neigh[j].second!=-1)
-                myfile<<i <<" "<<X->at(i).Out_Neigh[j].first<<"\n";
-        }
+    for (int j = 0; j < X->at(i).Out_Neigh.size(); j++) {
+      if (X->at(i).Out_Neigh[j].second != -1)
+        myfile << i << " " << X->at(i).Out_Neigh[j].first << "\n";
     }
-    myfile.close();
-
+  }
+  myfile.close();
 }
 
+void adaptiveModel(int *p, const char *file) {
+  cout << "I am here running adaptive";
 
+  string graphConvert =
+      "./Galois-2.2.1/build/tools/graph-convert/graph-convert";
+  graphConvert = graphConvert += " -intedgelist2gr ";
+  graphConvert = graphConvert + "galoisinput";
+  graphConvert = graphConvert += " graphconvertoutput";
+  const char *command = graphConvert.c_str();
+  cout << "Running file using " << command << endl;
+  system(command);
 
-void adaptiveModel(int *p,  const char *file)
-{
-    cout <<"I am here running adaptive";
+  string str = "./Galois-2.2.1/build/apps/pagerank/pagerank";
+  // str = str + " ../pagerankData/rmat21/rmat21er10mgaloisinputbinary";
+  str = str + " graphconvertoutput";
+  // str=str+"
+  // -graphTranspose=../pagerankData/rmat21/rmat21er10mgaloisinputbinary";
+  str += " -graphTranspose=graphconvertoutput ";
+  str = str + " -t ";
+  std::ostringstream ss;
+  ss << *p;
+  str = str + ss.str();
 
-    string graphConvert="./Galois-2.2.1/build/tools/graph-convert/graph-convert";
-    graphConvert=graphConvert+=" -intedgelist2gr ";
-    graphConvert=graphConvert+"galoisinput";
-    graphConvert=graphConvert+=" graphconvertoutput";
-    const char *command=graphConvert.c_str();
-    cout << "Running file using " << command << endl;
-    system(command);
+  str = str + " >galoisoutput";
 
-    string str = "./Galois-2.2.1/build/apps/pagerank/pagerank";
-   // str = str + " ../pagerankData/rmat21/rmat21er10mgaloisinputbinary";
-   str=str+" graphconvertoutput";
-   //str=str+" -graphTranspose=../pagerankData/rmat21/rmat21er10mgaloisinputbinary";
-   str+=" -graphTranspose=graphconvertoutput ";
-   str =str+" -t ";
-    std::ostringstream ss;
-    ss << *p;
-    str= str+ss.str();
-
-    str= str+" >galoisoutput";
-
-   command = str.c_str();
-    cout << "Running file using " << command << endl;
-    system(command);
-
+  command = str.c_str();
+  cout << "Running file using " << command << endl;
+  system(command);
 }
 
+std::string getLastLine(std::ifstream &in) {
+  std::string line;
+  while (in >> std::ws && std::getline(in, line)) // skip empty lines
+    ;
 
-
-std::string getLastLine(std::ifstream& in)
-{
-    std::string line;
-    while (in >> std::ws && std::getline(in, line)) // skip empty lines
-        ;
-
-    return line;
+  return line;
 }
 
+void readGaloisOutput() {
+  std::ifstream file("galoisoutput");
 
-void readGaloisOutput()
-{
-    std::ifstream file("galoisoutput");
+  if (file) {
+    std::string line = getLastLine(file);
+    cout << line << "\n";
 
-    if (file)
-    {
-        std::string line = getLastLine(file);
-        cout <<line<<"\n";
-
-    }
-    else
-        std::cout << "Unable to open file.\n";
-
-
+  } else
+    std::cout << "Unable to open file.\n";
 }
 
-#endif //BHOWMICKPR_ADAPTIVE_H
+#endif // BHOWMICKPR_ADAPTIVE_H
