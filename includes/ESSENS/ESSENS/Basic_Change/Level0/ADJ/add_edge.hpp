@@ -1,8 +1,9 @@
 #ifndef ADD_EDGE_HPP
 #define ADD_EDGE_HPP
-#include "ADJ/network_defs.hpp"
-#include "extract_elements.hpp"
-#include "binary_set_operations.hpp"
+
+#include "../../../Core/Basic_IO/Format/Level0/ADJ/network_defs.hpp"
+#include "../../../Core/Basic_SetOps/Level0/extract_elements.hpp"
+#include "../../../Core/Basic_SetOps/Level2/binary_set_operations.hpp"
 using namespace std;
 
 

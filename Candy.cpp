@@ -28,9 +28,9 @@ int add(int i, int j) {
     return i + j;
 }
 
-float calculateSSSP(std::string inputGraphFile, std::string changedEdges, std::string initialSSSP, int totalNodes, int threads)
+float calculateSSSP(std::string inputGraphFile, std::string changedEdges, std::string remainderGraph, int totalNodes, int threads)
 {
-    float computeTime= singleSourceShortestPath(inputGraphFile,changedEdges,initialSSSP,totalNodes,threads);
+    float computeTime= singleSourceShortestPath(inputGraphFile,remainderGraph,changedEdges,totalNodes,threads);
     return computeTime;
 }
 

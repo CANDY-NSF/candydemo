@@ -1,7 +1,7 @@
 #ifndef FIND_NEIGHBORS_HPP
 #define FIND_NEIGHBORS_HPP
-#include "ADJ/network_defs.hpp"
-#include "unary_set_operations.hpp"
+#include "../../../Basic_IO/Format/Level0/ADJ/network_defs.hpp"
+#include "../../../Basic_SetOps/Level2/unary_set_operations.hpp"
 using namespace std;
 
 

@@ -1,6 +1,6 @@
 #ifndef COMPARE_ELEMENTS_HPP
 #define COMPARE_ELEMENTS_HPP
-#include "structure_defs.hpp"
+#include "../../../../../../includes/ESSENS/ESSENS/Core/Basic_IO/Format/Level0/structure_defs.hpp"
 using namespace std;
 
 //Compares Two Elements a,b

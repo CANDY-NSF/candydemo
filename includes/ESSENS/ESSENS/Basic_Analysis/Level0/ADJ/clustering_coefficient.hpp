@@ -1,8 +1,10 @@
 #ifndef CLUSTERING_COEFFICIENT_HPP
 #define CLUSTERING_COEFFICIENT_HPP
-#include "unary_set_operations.hpp"
-#include "binary_set_operations.hpp"
-#include "ADJ/find_neighbors.hpp"
+#include "../../../../../../includes/ESSENS/ESSENS/Core/Basic_SetOps/Level2/unary_set_operations.hpp"
+#include "../../../../../../includes/ESSENS/ESSENS/Core/Basic_SetOps/Level2/binary_set_operations.hpp"
+
+#include "../../../../../../includes/ESSENS/ESSENS/Core/Basic_Traversal/Level1/ADJ/find_neighbors.hpp"
+
 
 using namespace std;
 

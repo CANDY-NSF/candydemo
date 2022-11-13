@@ -1,6 +1,6 @@
 #ifndef DEGREE_CENTRALITY_HPP
 #define DEGREE_CENTRALITY_HPP
-#include "unary_set_operations.hpp"
+#include "../../../../../../includes/ESSENS/ESSENS/Core/Basic_SetOps/Level2/unary_set_operations.hpp"
 
 using namespace std;
 

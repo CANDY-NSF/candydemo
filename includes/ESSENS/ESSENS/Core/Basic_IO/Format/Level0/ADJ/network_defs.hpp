@@ -1,7 +1,7 @@
 #ifndef ADJ_NETWORK_DEFS_HPP
 #define ADJ_NETWORK_DEFS_HPP
 
-#include"structure_defs.hpp"
+#include"../structure_defs.hpp"
 #include<list>
 using namespace std; 
 

@@ -1,7 +1,8 @@
 #ifndef NMI_COMPUTATION_HPP
 #define NMI_COMPUTATION_HPP
-#include "unary_set_operations.hpp"
-#include "binary_set_operations.hpp"
+#include "../../../../../includes/ESSENS/ESSENS/Core/Basic_SetOps/Level2/unary_set_operations.hpp"
+#include "../../../../../includes/ESSENS/ESSENS/Core/Basic_SetOps/Level2/binary_set_operations.hpp"
+
 
 using namespace std;
 

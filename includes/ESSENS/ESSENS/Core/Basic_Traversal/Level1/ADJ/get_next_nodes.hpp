@@ -1,8 +1,8 @@
 #ifndef GET_NEXT_NODES_HPP
 #define GET_NEXT_NODES_HPP
-#include "unary_set_operations.hpp"
+#include "../../../../Core/Basic_SetOps/Level2/unary_set_operations.hpp"
 //#include "binary_set_operations.hpp"
-#include "ADJ/add_edge.hpp"
+#include "../../../../Basic_Change/Level0/ADJ/add_edge.hpp"
 using namespace std;
 
 /***** Update the Priority Queue *****/

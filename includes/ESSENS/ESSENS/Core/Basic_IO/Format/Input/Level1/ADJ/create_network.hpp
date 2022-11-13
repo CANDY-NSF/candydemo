@@ -1,9 +1,11 @@
 #ifndef ADJ_CREATE_NETWORK_HPP
 #define ADJ_CREATE_NETWORK_HPP
-#include "structure_defs.hpp"
-#include "order_elements.hpp"
-#include "unary_set_operations.hpp"
-#include "ADJ/network_defs.hpp"
+
+
+#include "../../../../Format/Level0/structure_defs.hpp"
+#include "../../../../../Basic_SetOps/Level1/order_elements.hpp"
+#include "../../../../../../../../../includes/ESSENS/ESSENS/Core/Basic_SetOps/Level2/unary_set_operations.hpp"
+#include "../../../../../../Core/Basic_IO/Format/Level0/ADJ/network_defs.hpp"
 
 
 using namespace std;

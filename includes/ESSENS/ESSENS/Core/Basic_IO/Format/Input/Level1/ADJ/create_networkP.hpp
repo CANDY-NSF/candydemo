@@ -1,7 +1,7 @@
 #ifndef ADJ_CREATE_NETWORKP_HPP
 #define ADJ_CREATE_NETWORKP_HPP
-#include "structure_defs.hpp"
-#include "ADJ/network_defs.hpp"
+#include "../../../../Format/Level0/structure_defs.hpp"
+#include "../../../../../../Core/Basic_IO/Format/Level0/ADJ/network_defs.hpp"
 
 
 using namespace std;

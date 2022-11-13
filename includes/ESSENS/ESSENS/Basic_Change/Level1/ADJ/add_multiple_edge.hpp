@@ -1,8 +1,8 @@
 #ifndef ADD_MULTIPLE_EDGE_HPP
 #define ADD_MULTIPLE_EDGE_HPP
-#include "ADJ/network_defs.hpp"
-#include "binary_set_operations.hpp"
-#include "ADJ/add_edge.hpp"
+#include "../../../Core/Basic_IO/Format/Level0/ADJ/network_defs.hpp"
+#include "../../../Core/Basic_SetOps/Level2/binary_set_operations.hpp"
+#include "../../Level0/ADJ/add_edge.hpp"
 using namespace std;
 
  

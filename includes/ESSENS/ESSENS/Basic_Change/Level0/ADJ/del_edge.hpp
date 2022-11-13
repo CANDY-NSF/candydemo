@@ -1,8 +1,8 @@
 #ifndef DEL_EDGE_HPP
 #define DEL_EDGE_HPP
-#include "ADJ/network_defs.hpp"
-#include "extract_elements.hpp"
-#include "unary_set_operations.hpp"
+#include "../../../Core/Basic_IO/Format/Level0/ADJ/network_defs.hpp"
+#include "../../../Core/Basic_SetOps/Level0/extract_elements.hpp"
+#include "../../../Core/Basic_SetOps/Level2/unary_set_operations.hpp"
 using namespace std;
 
 

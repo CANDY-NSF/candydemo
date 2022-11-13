@@ -1,7 +1,7 @@
 #ifndef CSR_NETWORK_DEFS_HPP
 #define CSR_NETWORK_DEFS_HPP
 
-#include"structure_defs.hpp"
+#include"../structure_defs.hpp"
 using namespace std; 
 
 //Structure  in STATIC CSR format---For diagram go to () 

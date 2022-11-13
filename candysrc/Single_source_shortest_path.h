@@ -6,130 +6,154 @@
 #define CANDY_SINGLE_SOURCE_SHORTEST_PATH_H
 
 
-
-#include "SP_structure.hpp"
-#include "readin_data.hpp"
-//#include "printout_others.hpp"
-#include "pr.h"
-#include "adaptive.h"
-float singleSourceShortestPath(std::string inputGraphFile, std::string changedEdges, std::string initialPageRank, int totalNodes, int threads)
-{
-    clock_t q, q1, q2,t;
-    clock_t updateStartTime;
-    clock_t updateEndTime;
+#include "SSSP_structure.h"
+#include "create_tree.hpp"
+#include "readinSSSP_data.h"
+#include "Ins_Del1.hpp"
+#include "../includes/ESSENS/ESSENS/Core/Basic_IO/Format/Input/Level2/input_to_network.hpp"
 
 
+//AUXILLIARY OPS
+#include<queue>
+#include<stack>
+#include<list>
+/*** All Headers Required From ESSENS **/
+
+void SSPInitialize(int nodes, int src, const A_Network &X, double &startx, double &endx, vector<RT_Vertex> &SSSP, int p);
+
+using namespace std;
+
+int singleSourceShortestPath(std::string inputGraphFile, std::string remainderGraph, std::string changedEdges, int totalNodes, int threads) {
+    clock_t q, q1, q2, t;
+    double startx, endx, starty, endy;
+
+    /***** Preprocessing to Graph (GUI) ***********/
+    t = clock();
+    q = clock();    //Assume Processed Input
+    //Form node node weight
+    //Nodes are numbered contiguously
+    //Starts from zero
+    //Edges are undirected (both a-->b and b-->a present)
+    //Check if valid input is given
+//    if ( argc < 7 ) { cout << "INPUT ERROR:: EIGHT inputs required. First: filename without tree. Second: Graph Certificate. Third: List of Edges to be Updated. Fourth: Upper Bound on Weight Fifth: number of nodes. Sixth: Size of batch. Seventh:number of threads\n"; return 0;}
+//    //Check to see if file opening succeeded
+//    ifstream the_file ( argv[1] ); if (!the_file.is_open() ) { cout<<"INPUT ERROR:: Could not open main //file\n";}
+//    ifstream the_file1 ( argv[2] ); if (!the_file1.is_open() ) { cout<<"INPUT ERROR:: Could not open SCC file\n";}
+//    ifstream the_file2 ( argv[3] ); if (!the_file2.is_open() ) { cout<<"INPUT ERROR:: Could not open update file\n";}
+
+
+/* Set the number of Threads and Vertices**/
     const char* ig = inputGraphFile.c_str();
     const char* ce = changedEdges.c_str();
-    const char* ipr = initialPageRank.c_str();
-
+    const char* ipr = remainderGraph.c_str();
+    int maxW = 100;
+    int nodes = totalNodes; //total number of vertices
+    int batch=2; //the number of changes processed per point
     int p = threads;  //total number of threads per core
-    int nodes=totalNodes;//total number of nodes
+    int graphDirectedUndirectedIndicator=0; // Should be 1 for SCC, 0 for not SCC
+//    ifstream the_file3 ( argv[8] ); if (!the_file3.is_open() ) { cout<<"INPUT ERROR:: Could not open SCC file\n";}
 
-    /**=============================================**/
-
-    /**=============================================**/
-    /*** Reading in Network at Time Step 0 ***/
-    /***============================================**/
-    //Obtain the list of edges.
-    q=clock();
-    PR_Network X;
-    PR_Vertex PR_v;
-    X.resize(nodes,PR_v);
-    int edges=readin_network(&X,ig);
-
-    readin_PageRank( ipr,&X);
-    q=clock()-q;
-    cout << "Total Time for updating SSSP:"<< ((float)q)/CLOCKS_PER_SEC <<"\n";
-//    q=clock();
-//    cout<<nodes;
-//    vector<changes> neighborRevisedList;
-//    neighborRevisedList.resize(nodes);
-//    cout<<"here";
-//    compute_dValue(&X,&p);
-//    cout<<"here11";
-//
-//    readin_changes(ce, &X,&neighborRevisedList);
-//
-//
-//
-//    q=clock()-q;
-//    cout << "Total Time for Reading Changes"<< ((float)q)/CLOCKS_PER_SEC <<"\n";
-//    /**=============================================**/
-//
-//    int countAffected=0;
-//    int count1=countAffectedvertices(&X,false, &countAffected);
-//    countAffected=count1;
-//    cout <<"here1";
-//    int count=0;
-//
-///* Sriram Dynamic Implementation */
-//
-//// Update all the meta information
-//    int maxL=100;
-//    bool etc= 1;
-//
-//
-//    clock_t DanglingStartTime;
-//    clock_t updateDanglingEndTime;
-//
-//    // updateStartTime=clock();
-//    //cout <<"max: "<<maxL<<"\n";
-//
-//
-//
-//    DanglingStartTime=clock();
-//    removeDanglingVertices(&X, &p);
-//    countAffectedvertices(&X,true, &countAffected);
-//    updateDanglingEndTime=clock()-DanglingStartTime;
-//    float updateTime=float(((float)updateDanglingEndTime)/CLOCKS_PER_SEC);
-//
-//    cout <<fixed<< "Total Time for remove Dangling vertices"<<updateDanglingEndTime <<"\n";
-//
-//    vector<int>initialList;
-//
-//    for(int i=0;i<X.size();i++)
-//    {
-//        if(X.at(i).updateFlag==true){
-//            //cout<<"updateList"<<i<<"\n";
-//            initialList.push_back(i);
-//            X.at(i).updateFlag=false;
-//        }
-//
-//    }
-//
-//
-//    updateStartTime=clock();
-//    //printPageRank(&X);
-//    //updateinitialIdentified(&X,&p,&maxL,&neighborRevisedList,&initialList);
-//    //printPageRank(&X);
-//    updatePageRank(&X,&p,&maxL,&neighborRevisedList, &etc);
-//    updateEndTime=clock()-updateStartTime;
-//    updateTime=float(((float)updateEndTime)/CLOCKS_PER_SEC);
-//    cout <<fixed<< "Total Time for updating Network "<< updateTime <<"\n";
-//
-//
-//
-//
-//// sort to print first 100
-////
-////
-////
-
-//
-////pq.push(make_pair(0.35,3));
-//
-//
-////pq.push(make_pair(0.36,1));
-//
-////pq.push(make_pair(0.32,2));
-//
-//
-//
+/** Set the number of Threads and Vertices**/
 
 
-    return ((float)q)/CLOCKS_PER_SEC;
+
+    /**   Initializing Memory ***/ /** TBD: Change to Array and Malloc**/
+// startx=omp_get_wtime();
+
+    //List of Changes
+    //There will be a list for inserts and a list for delete
+    vector<xEdge> allChange;
+    allChange.clear();
+    /*** Initializing Memory ***/
+
+
+
+    /*** Read Remainder Edges as Graph ***/
+    startx=omp_get_wtime();
+    A_Network R;
+    //readin_network(&R,  argv[1], -1);
+    readin_graphU(&R, nodes,ig);
+    endx=omp_get_wtime();
+    printf("Total Time for Reading Remainder Network %f \n", endx-startx);
+    /*** Finished Reading CRT Tree **/
+
+
+    /*** Read the Certificate ***/
+    startx=omp_get_wtime();
+    A_Network X;
+    readin_network(&X, ipr,-1);
+    // readin_graphU(&X, nodes,argv[1]);
+    endx=omp_get_wtime();
+    printf("Total Time for Reading Certificate Network %f \n", endx-startx);
+    /*** Finished Reading CRT Tree **/
+
+    /*** Read set of Changed Edges ***/
+    startx=omp_get_wtime();
+    readin_changes(ce, &allChange);
+    endx=omp_get_wtime();
+    printf("Total Time for Reading Update List %f \n", endx-startx);
+    /*** Finished Reading Changed Edges **/
+
+/** Add Buffer for Extra Nodes ***/
+
+
+    //Initializing  Rooted Tree
+    RT_Vertex RTV;
+    vector<RT_Vertex> SSSP;
+    vector<SCC_vertex>SCC;
+    if(graphDirectedUndirectedIndicator==0) {
+        int src=0; //the source from which the paths are computed
+
+        SSSP.clear();
+        SSSP.resize(nodes, RTV);
+        SSPInitialize(nodes, src, X, startx, endx, SSSP,p);
+        printf("Total Time for Computing degree and Updating SSSSP %f \n", endx - startx);
+        printf("==Update Starts =======\n");
+        startx = omp_get_wtime();
+        create_treeS(&X, &R, &SSSP, src, p);
+        endx = omp_get_wtime();
+        printf("Total Time for Creating tree %f \n", endx - startx);
+
+        double maxV = (double) maxW * X.size();
+
+        starty = omp_get_wtime();
+        //Update the inserted and delted edges in the tree
+        startx = omp_get_wtime();
+        int te = 0;
+        edge_update(&allChange, &X, &SSSP, &R, &maxV, &te, p);
+        endx = omp_get_wtime();
+        printf("Total Time for Initial Update %f,\n", endx - startx);
+
+        startx = omp_get_wtime();
+        rest_update(&X, &SSSP, &R, &maxV, &te, p);
+        endx = omp_get_wtime();
+        printf("Total Time for Complete Update %f\n", endx - startx);
+
+        endy = omp_get_wtime();
+        printf("Total Time for Initia+Complete Update %f %d\n", endy - starty, te);
+
+    }
+
+    return 0;
 }
+
+void SSPInitialize(int nodes, int src, const A_Network &X, double &startx, double &endx, vector<RT_Vertex> &SSSP, int p) {
+    startx = omp_get_wtime();
+#pragma omp parallel for num_threads(p)
+    for (int i = 0; i < nodes; i++) {
+
+        if (i == src) { SSSP[i].Root = -1; }
+        else { SSSP[i].Root = i; }
+        SSSP[i].Level = 0;
+        SSSP[i].Dist = 0.0;
+        SSSP[i].degree = int(X[i].ListW.size());
+
+
+    }
+    endx = omp_get_wtime();
+}//end of main
+
+
 
 
 

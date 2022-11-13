@@ -1,10 +1,10 @@
 #ifndef NETWORK_TRAVERSAL_HPP
 #define NETWORK_TRAVERSAL_HPP
-#include "ADJ/find_neighbors.hpp"
-#include "ADJ/add_to_heap.hpp"
-#include "ADJ/get_next_nodes.hpp"
-#include "ADJ/update_values.hpp"
-#include "printout_others.hpp"
+#include "../../Level1/ADJ/find_neighbors.hpp"
+#include "../../Level1/ADJ/add_to_heap.hpp"
+#include "../../Level1/ADJ/get_next_nodes.hpp"
+#include "../../Level1/ADJ/update_values.hpp"
+
 using namespace std;
 
 /*** User Defined ***/

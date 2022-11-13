@@ -1,7 +1,7 @@
 #ifndef CSR_CREATE_NETWORK_HPP
 #define CSR_CREATE_NETWORK_HPP
-#include "structure_defs.hpp"
-#include "CSR/network_defs.hpp"
+#include "../../../../../../../ESSENS/Core/Basic_IO/Format/Level0/structure_defs.hpp"
+#include "../../../../../../../ESSENS/Core/Basic_IO/Format/Level0/CSR/network_defs.hpp"
 
 using namespace std;
 

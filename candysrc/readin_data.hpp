@@ -239,7 +239,12 @@ int readin_changes( const char *myfile, PR_Network *X, vector<changes> *neighbor
     return  countNumberOfAffected;
     
 }
+
+
 /*** End of Function ***/
 
+//Assumes the all nodes present
+//Node starts from 0
+//Total number of vertices=nodes and are consecutively arranged
 
 #endif

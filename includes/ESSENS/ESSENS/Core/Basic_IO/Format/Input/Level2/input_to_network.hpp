@@ -1,8 +1,10 @@
 #ifndef INPUT_TO_NETWORK_HPP
 #define INPUT_TO_NETWORK_HPP
 
-#include "ADJ/create_network.hpp"
-#include "CSR/create_network.hpp"
+
+#include "../../../../Basic_IO/Format/Input/Level1/ADJ/create_network.hpp"
+
+#include "../../../../Basic_IO/Format/Input/Level1/CSR/create_network.hpp"
 using namespace std;
 
 /****List of Functions ******/
@@ -21,7 +23,7 @@ using namespace std;
  
 /**** Reading File to Create Network******/
 template <class myNetworkType>
-void readin_network(myNetworkType *X, char *file, int XtraN)
+void readin_network(myNetworkType *X, const char *file, int XtraN)
 {
 	//Activity0: Reads in File to a vector of edges <edgelist>
 	
@@ -60,49 +62,6 @@ void readin_network(myNetworkType *X, char *file, int XtraN)
 
 /**** Reading File to Create Network******/
 //These are for directed networks which can start with 0 or 1
-template <class myNetworkType>
-void readin_network(myNetworkType *X, char *file, int fst, int XtraN)
-{
-    //Activity0: Reads in File to a vector of edges <edgelist>
-    
-    //File reading parameters
-    FILE *graph_file;
-    char line[128];
-    int nodes;
-    
-    vector<Edge> a ;//list of all edges of network
-    a.resize(0);
-    Edge myedge;
-    
-    graph_file=fopen(file, "r");
-    while(fgets(line,128,graph_file) != NULL)
-    {
-        int n1,n2;
-        //Read line
-        sscanf(line,"%d %d %lf",&n1,&n2,&myedge.edge_wt);
-        myedge.node1=n1-fst;
-        myedge.node2=n2-fst;
-        a.push_back(myedge);
-        
-        myedge.node1=n2-fst;
-        myedge.node2=n1-fst;
-        a.push_back(myedge);
-        
-        
-    }//end of while
-    fclose(graph_file);
-    sort(&a, inc_node1);
-    a=unique(a);
-    
-    cout <<":::"<< a.size() <<"\n";
-    
-    //Activity1: Creates specified network format
-    create_Network(&a, 0, X,XtraN);
-    
-    return;
-}
-
-/********* End of Function **********/
 
 
 
