@@ -10,7 +10,7 @@
 #include "SSSP_structure.h"
 #include "create_tree.hpp"
 #include "readinSSSP_data.h"
-
+#include <pybind11/pybind11.h>
 #include <pybind11/pybind11.h>
 // AUXILLIARY OPS
 #include <list>
@@ -69,7 +69,7 @@ int singleSourceShortestPath(std::string inputGraphFile,
     A_Network T;
     readin_networkM(&X, &T, nodes, ipr, ig);
     endx=omp_get_wtime();
-    printf("Total Time for Reading Whole Network %f \n", endx-startx);
+    py::print("Total Time for Reading Whole Network:", endx-startx);
     /*** Finished Reading  **/
 
 
@@ -77,7 +77,7 @@ int singleSourceShortestPath(std::string inputGraphFile,
     startx=omp_get_wtime();
     create_treeS(&T, &SSSP,src, p);
     endx=omp_get_wtime();
-    printf("Total Time for Reading SSSP Tree %f \n", endx-startx);
+    py::print("Total Time for Reading SSSP Tree:", endx-startx);
     SSSP_Org=SSSP;
     /*** Finished Reading  **/
 
@@ -100,19 +100,19 @@ int singleSourceShortestPath(std::string inputGraphFile,
     startx=omp_get_wtime();
     edge_update(&allChange, &X, &SSSP, &maxV, p);
     endx=omp_get_wtime();
-    printf("Total Time for Initial Update  %f\n", endx-startx);
+    py::print("Total Time for Initial Update:", endx-startx);
 
 
     //Update the other vertices based on new inserted edges
     startx=omp_get_wtime();
     rest_update(&X, &SSSP, &maxV, asl, p);
     endx=omp_get_wtime();
-    printf("Total Time for Complete Update  %f\n", endx-startx);
+    py::print("Total Time for Complete Update:", endx-startx);
     //printRT(&SSSP);
 
     endy=omp_get_wtime();
 
-    printf("====Total Time %f \n", endy-starty);
+    py::print("Total Time:", endy-starty);
 
 
     //Counting
