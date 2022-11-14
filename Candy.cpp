@@ -24,8 +24,7 @@ void calculatePR(std::string inputGraphFile, std::string changedEdges,
 
 int add(int i, int j) { return i + j; }
 
-float calculateSSSP(std::string inputGraphFile, std::string changedEdges,
-                    std::string initialSSSP, int totalNodes, int threads) {
+float calculateSSSP(std::string inputGraphFile,std::string initialSSSP, std::string changedEdges, int totalNodes, int threads) {
   float computeTime = singleSourceShortestPath(
       inputGraphFile, initialSSSP, changedEdges, totalNodes, threads);
   return computeTime;
