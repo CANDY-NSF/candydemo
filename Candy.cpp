@@ -24,10 +24,11 @@ void calculatePR(std::string inputGraphFile, std::string changedEdges,
 
 int add(int i, int j) { return i + j; }
 
-float calculateSSSP(std::string inputGraphFile,std::string initialSSSP, std::string changedEdges, int totalNodes, int threads) {
+void calculateSSSP(std::string inputGraphFile,std::string initialSSSP, std::string changedEdges, int totalNodes, int threads) {
+    py::print("Initiating update process");
   float computeTime = singleSourceShortestPath(
       inputGraphFile, initialSSSP, changedEdges, totalNodes, threads);
-  return computeTime;
+
 }
 
 namespace py = pybind11;
@@ -62,12 +63,14 @@ void about() {
 
 PYBIND11_MODULE(candy, mod) {
 
-  mod.def("pageRank", &calculatePR, "Calculate Page Rank");
-  mod.def("singleSourceShortestPath", &calculateSSSP,
-          "Calculate Single Source Shortest Path");
+  mod.def("pageRank",  &calculatePR,"Calculate Page Rank",
+          py::arg("inputGraphFile"), py::arg("changedEdges"),py::arg("initialPageRank"),py::arg("totalNodes"),py::arg("threads"));
+  mod.def("singleSourceShortestPath", &calculateSSSP,"Calculate Single Source Shortest Path",
+          py::arg("inputGraphFile"), py::arg("changedEdges"),py::arg("initialSSSP"),py::arg("totalNodes"),py::arg("threads"));
   mod.def("help", &help,
           "help functions tells you the parameters and function this CANDY "
           "wrapper supports");
   mod.def("about", &about, "About us");
-  mod.def("add", &add, "A function which adds two numbers");
+  mod.def("add", &add, "A function which adds two numbers",
+          py::arg("i"), py::arg("j"));
 }
